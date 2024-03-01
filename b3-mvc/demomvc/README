@@ -1,0 +1,41 @@
+*Java Bean:
++ class java có default constructor và có getter và setter mọi field, attribute
+đều là private 
+
+I. MVC là gì?
++ MVC (model-view-controller) trong java:
+==> là 1 trong những mẫu thiết kể phổ biến 
+==> Mục đích: để tách biệt các phần logic application thành 3 phần: Model, View
+Controller
+
+1. Model:
+==> Thành phần trung tâm, chứa các dự liệu động, logic và các quy tắc của ứng dụng
+độc lập với giao diện người dùng.
+Ví dụ: các đối tượng User, Product, Order trong ứng dụng mua sắm
+
+2. View:
+==> Thành phần hiển thị thông tin cho user dưới dạng các biểu đồ, bảng,....
+Có thể có nhiều view khác nhau cho cùng 1 dữ liệu
+Ví dụ: giao diện website
+
+3. Controller: Nhận input từ người dùng, chuyển đổi thành các lệnh và gửi cho Model
+hoặc View
+Ví dụ: các servlet/controller xử lí request và gửi dữ liệu tới view
+
+==> Như vậy MVC giúp tách biệt các thành phần trong ứng dụng, 
+dễ dàng bảo trì và mở rộng.
+
+II. MVC chia làm 2 phần:
+1. MVC1: 
+- Servlet và JSP là công nghệ chính để phát triển ứng dụng web
+- Ưu điểm:
+    Dễ dàng và nhanh chóng phát triển ứng dụng
+- Nhươc điểm;
+    Việc điều khiển điều hướng bị phân tán. Mất nhiều thời gian để tạo các thẻ
+jsp tùy chỉnh. Khó mở rộng.
+
+2. MVC2:
+- Dựa trên mô hình MVC bao gồm 3 module: model - view - controller
+- Ưu điểm: Điều khiển dễ dàng, dễ bảo trì, mở rộng. Tách biệt tốt
+- Nhược điểm: phải tự viết code cho controller. Nếu thay đổi code controller thì
+phải biên dịch lại class và triển khai lại ứng dụng

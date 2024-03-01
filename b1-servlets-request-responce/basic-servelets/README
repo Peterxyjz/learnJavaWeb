@@ -1,0 +1,83 @@
+1. CLIENT: 
+⇒ Cái mà người dùng thấy (server cho thấy) ⇒ client side
+⇒ Giúp để đọc HTML
+
+2. SERVELET:
++ Servlets là các chương trình java nhỏ chạy trực tiếp trên WEB SERVER và 
+    giúp xây dựng trang web động.
++ Servlets nhận và phản hồi RESPONSE từ các REQUEST Thông qua HTTP.
++ Khi một servlet chấp nhận cuộc gọi từ máy khách, nó sẽ nhận được hai đối tượng:
+    ServletRequest, đóng gói giao tiếp từ máy khách đến máy chủ.
+    ServletResponse, đóng gói giao tiếp từ servlet đến máy khách.
+
+3. HTTP Request:
+Gồm:
+    + request method
+    + request URL
+    + header fields
+    + body
+
+3.1 - Request Method:
++ GET: Được sử dụng để yêu cầu lấy dữ liệu từ server. Thông tin được đính kèm trong URL.
++ POST: Được sử dụng để gửi dữ liệu lên server. Thông tin được đính kèm trong body của request.
++ PUT: Được sử dụng để gửi dữ liệu lên server để tạo hoặc cập nhật tài nguyên.
++ DELETE: Được sử dụng để xóa tài nguyên trên server.
++ HEAD: Tương tự như GET nhưng chỉ lấy header response mà không lấy body.
++ OPTIONS: Được sử dụng để mô tả các tùy chọn giao tiếp cho tài nguyên.
++ TRACE: Thực hiện một bài kiểm tra vòng lặp để xem liệu message đã đến đích hay chưa.
+
+4. HTTP Reqonses:
+Gồm:
+    + Result code
+    + header fields
+    + body
+BẤT BUỘC NHỚ:
+    404: Nguồn tài nguyên yêu cầu không tồn tại (không tìm thấy)
+    401: Yêu cầu xác thực HTTP
+    500: Lỗi máy chủ ngăn hoàn thành yêu cầu (ngăn REQUEST)
+    503: Máy chủ HTTP quá tải tạm thời
+    101: Switching protocol
+==> Máy chủ sẽ tuân theo tiêu đề Nâng cấp và thay đổi sang giao thức khác (Mới trong HTTP 1.1)
+    
+    200: OK
+    201: created
+    202: accepted
+    203: Non-Authoritative information (không có quyền truy cập).
+
+5. Servlet life cycle:
+    + init: khởi tạo 
+    + service: xử lí code
+    + destroy: đóng chương trình
+
+6. HttpServlet class:
+==> HTTP định nghĩa một tập hợp các thông điệp yêu cầu dạng văn bản được gọi là
+các "phương thức" HTTP được triển khai trong lớp HTTPservlet:
+
++ Có bao nhiêu method request thì có bấy nhiêu httpservlet class:
+    - doGet: được tạo bởi server (thông qua phương thức service) ==> xử lý yêu cầu GET
+    - doHead: Nhận HEAD HTTP từ phương thức service được bảo vệ và xử lý yêu cầu
+    - doPost: Được gọi bởi server để cho phép một servlet xử lý yêu cầu POST.
+    - doPut: Được gọi bởi server (thông qua phương thức service) để cho phép một 
+        servlet xử lý yêu cầu PUT.
+    - doDelete: Được gọi bởi server (thông qua phương thức service) để cho phép 
+        một servlet xử lý yêu cầu DELETE. 
+    - doOptions: Được gọi bởi server (thông qua phương thức service) để cho phép 
+        một servlet xử lý yêu cầu OPTIONS.
+    - doTrace: Được gọi bởi server (thông qua phương thức service) để cho phép 
+        một servlet xử lý yêu cầu TRACE.
+    
+7. Request header:
+- Accept: Chỉ định các kiểu MIME mà trình duyệt ưu tiên. Ví dụ: text/html, image/png,...
+- Accept-Charset: Chỉ định bảng mã ký tự mà trình duyệt mong đợi. Ví dụ: utf-8, iso-8859-1,..
+- Content-Length: Đối với request POST, chỉ định kích thước dữ liệu đính kèm. 
+- Connection: Xác định liên kết có được giữ hay không. Nếu nhận được Keep-Alive tức là sử dụng kết nối liên tục.
+- Cookie: Một trong những header quan trọng nhất, chứa thông tin cookie của client.
+- Host: Chứa tên host và port như trong URL ban đầu.
+- If-Modified-Since: Chỉ trả về tài liệu mới hơn thời gian này.
+- Referer: URL của trang chứa liên kết mà người dùng đã click để tới trang hiện tại.
+
+
+
+
+
+

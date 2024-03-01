@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/lopHoc/JavaWeb/F1/b5-jdbc/jdbc/src/java/db/DBContext.java</file>
+            <file>file:/D:/lopHoc/JavaWeb/F1/b5-jdbc/jdbc/web/WEB-INF/views/toy/index.jsp</file>
+            <file>file:/D:/lopHoc/JavaWeb/F1/b5-jdbc/jdbc/web/WEB-INF/views/home/index.jsp</file>
+            <file>file:/D:/lopHoc/JavaWeb/F1/b5-jdbc/jdbc/src/java/controllers/ToyController.java</file>
+            <file>file:/D:/lopHoc/JavaWeb/F1/b5-jdbc/jdbc/src/java/db/ToyFacede.java</file>
+            <file>file:/D:/lopHoc/JavaWeb/F1/b5-jdbc/jdbc/src/java/controllers/FrontController.java</file>
+            <file>file:/D:/lopHoc/JavaWeb/F1/b5-jdbc/jdbc/web/index.jsp</file>
+            <file>file:/D:/lopHoc/JavaWeb/F1/b5-jdbc/jdbc/web/WEB-INF/layouts/main.jsp</file>
+            <file>file:/D:/lopHoc/JavaWeb/F1/b5-jdbc/jdbc/src/java/db/Toy.java</file>
+            <file>file:/D:/lopHoc/JavaWeb/F1/b5-jdbc/jdbc/src/java/controllers/HomeController.java</file>
+        </group>
+    </open-files>
+</project-private>

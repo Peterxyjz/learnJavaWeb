@@ -1,0 +1,20 @@
+Thư mục đặc biệt:
+- /WEB-INF/classes: Thư mục chứa các lớp java là 1 phần của ứng dụng NHƯNG KHÔNG
+    ĐƯỢC ĐÓNG GÓI TRONG CÁC FILE JAR.
+
+- /WEB-INF/lib : Thư mục chứa các file JAR mà ứng dụng cần sử dụng. Có thể bao
+gồn thư viện cơ sở dữ liệu, tiện ích
+
+- /WEB-INF - Thư mục này chứa file cấu hình triển khai web.xml, cung cấp thông 
+tin cấu hình và ánh xạ cho các servlet, filter, listener, v.v. trong ứng dụng.
+ 
+- Các trang web và các tài nguyên tĩnh thường nằm trong các thư mục bên ngoài 
+/WEB-INF, như /images, /css, /js, v.v.
+
+- Lý do /WEB-INF được bảo vệ là vì nó chứa các thông tin cấu hình nhạy cảm 
+trong web.xml không nên để công khai. Các lớp và thư viện dưới /WEB-INF cũng 
+không dành cho truy cập công khai.
+
+⇒ /WEB-INF chứa cấu hình, lớp và thư viện điều khiển ứng dụng, trong khi các 
+tài nguyên tĩnh nằm ngoài các thư mục công khai. 
+web.xml cung cấp chất kết dính để nối tất cả lại với nhau.
