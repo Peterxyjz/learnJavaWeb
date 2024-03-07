@@ -2,6 +2,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <h3>List of Toys</h3>
 <hr/>
+<a href="create.do">Create</a>
+<br/>
+<br/>
 <table>
     <thead>
         <tr>
@@ -10,6 +13,8 @@
             <th>Price</th>
             <th>Expired Date</th>
             <th>Brand Id</th>
+            <th>Operations</th>
+
         </tr>
     </thead>
     <tbody>
@@ -21,6 +26,10 @@
                 <th>${toy.price}</th>
                 <th>${toy.expDate}</th>
                 <th>${toy.brand}</th>
+                <td>
+                    <a href="edit.do?id=${toy.id}">Edit</a> |
+                    <a href="delete.do?id=${toy.id}">Delete</a>
+                </td>
             </tr>
         </c:forEach>
     </tbody>
