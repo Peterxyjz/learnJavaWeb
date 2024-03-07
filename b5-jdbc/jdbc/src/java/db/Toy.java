@@ -1,6 +1,6 @@
 package db;
 //entity class: java bean && thuộc tính giống table database
-import java.sql.Date;
+import java.util.Date;
 
 public class Toy {
     private String id;
@@ -51,5 +51,7 @@ public class Toy {
     public void setBrand(String brand) {
         this.brand = brand;
     }
+
+    
     
 }
