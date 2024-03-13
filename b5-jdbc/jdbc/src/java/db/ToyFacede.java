@@ -90,6 +90,16 @@ public class ToyFacede {
         con.close();;
     }
     
-    
+    public void delete(String id) throws SQLException{
+        //Tạo liên kết với db
+        Connection con = DBContext.getConnection();
+        //tạo đối tượng PreparedStatement
+        PreparedStatement stm = con.prepareStatement("DELETE Toy WHERE id = ?");
+        //Cung cấp đối số
+        stm.setString(1, id);
+        //thực thi câu lệnh
+        int count = stm.executeUpdate();
+        con.close();
+    }
 
 }

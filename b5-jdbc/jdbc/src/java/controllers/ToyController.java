@@ -1,5 +1,7 @@
 package controllers;
 
+import db.BrandDAO;
+import db.BrandDTO;
 import db.Toy;
 import db.ToyFacede;
 import java.io.IOException;
@@ -59,14 +61,14 @@ public class ToyController extends HttpServlet {
                 edit_handler(request, response);
                 break;
             //delete: hiện form hỏi ngta có muốn xóa hay không ==> xử lí 
-//            case "delete":
-//                //hiện form edit
-//                delete(request, response);
-//                break;
-//            case "delete_handler":
-//                //xử lí edit
-//                delete_handler(request, response);
-//                break;
+            case "delete":
+                //hiện form edit
+                delete(request, response);
+                break;
+            case "delete_handler":
+                //xử lí edit
+                delete_handler(request, response);
+                break;
         }
 
     }
@@ -89,6 +91,14 @@ public class ToyController extends HttpServlet {
     protected void create(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String layout = (String) request.getAttribute("layout");
+        try {
+            BrandDAO bd = new BrandDAO();
+            List<BrandDTO> bList = bd.select();
+            request.setAttribute("bList", bList);
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("errMsg", "Error when reading brand data");
+        }
         request.getRequestDispatcher(layout).forward(request, response);
     }
 
@@ -111,6 +121,10 @@ public class ToyController extends HttpServlet {
             toy.setPrice(price);
             toy.setExpDate(expDate);
             toy.setBrand(brand);
+            //khi ngoaij le:
+            BrandDAO bd = new BrandDAO();
+            List<BrandDTO> bList = bd.select();
+            request.setAttribute("bList", bList);
             //Lưu vào db
             tf.create(toy);
             //chuyển trang về trang index.do
@@ -135,6 +149,10 @@ public class ToyController extends HttpServlet {
             ToyFacede tf = new ToyFacede();
             Toy toy = tf.select(id);
             request.setAttribute("toy", toy);
+            
+            BrandDAO bd = new BrandDAO();
+            List<BrandDTO> bList = bd.select();
+            request.setAttribute("bList", bList);
         } catch (Exception e) {
             e.printStackTrace(); 
             request.setAttribute("errMsg", "Error when reading toy data");
@@ -161,9 +179,12 @@ public class ToyController extends HttpServlet {
             toy.setPrice(price);
             toy.setExpDate(expDate);
             toy.setBrand(brand);
+            //tránh lỗi:
+            BrandDAO bd = new BrandDAO();
+            List<BrandDTO> bList = bd.select();
+            request.setAttribute("bList", bList);
             //Lưu toy vào request để hiện lên khi bị ngoại lệ
-            request.setAttribute("toy", toy);
-            
+            request.setAttribute("toy", toy);            
             //Lưu vào db
             tf.update(toy);
             //chuyển trang về trang index.do
@@ -179,49 +200,34 @@ public class ToyController extends HttpServlet {
         }    
     }
     
-//    protected void delete(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
-//        String layout = (String) request.getAttribute("layout");
-//        String id = request.getParameter("")
-//        request.getRequestDispatcher(layout).forward(request, response);
-//    }
-//    
-//    protected void edit_handler(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
-//        String layout = (String) request.getAttribute("layout");
-//        try {
-//            ToyFacede tf = new ToyFacede();
-//            //Lấy dữ liệu từ client:
-//            String id = request.getParameter("id");
-//            String name = request.getParameter("name");
-//            double price = Double.parseDouble(request.getParameter("price"));
-//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//            Date expDate = sdf.parse(request.getParameter("expDate"));
-//            String brand = request.getParameter("brand");
-//            //tạo đối tượng toy:
-//            Toy toy = new Toy();
-//            toy.setId(id);
-//            toy.setName(name);
-//            toy.setPrice(price);
-//            toy.setExpDate(expDate);
-//            toy.setBrand(brand);
-//            //Lưu toy vào request để hiện lên khi bị ngoại lệ
-//            request.setAttribute("toy", toy);
-//            
-//            //Lưu vào db
-//            tf.update(toy);
-//            //chuyển trang về trang index.do
-////            request.getRequestDispatcher("/toy/index.do").forward(request, response);
-//            response.sendRedirect(request.getContextPath() + "/toy/index.do");
-//        } catch (Exception e) {
-//            e.printStackTrace(); //in lỗi ở output giống sout
-////            request.setAttribute("errMsg", e.toString());
-//            request.setAttribute("errMsg", "Error when editing toy data");
-//            //Cho hiện lại trang create:
-//            request.setAttribute("action", "edit");
-//            request.getRequestDispatcher(layout).forward(request, response);
-//        }    
-//    }    
+    protected void delete(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String layout = (String) request.getAttribute("layout");
+        String id = request.getParameter("id");
+        request.setAttribute("id", id);
+        request.getRequestDispatcher(layout).forward(request, response);
+    }
+    
+    protected void delete_handler(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String layout = (String) request.getAttribute("layout");
+        try {
+            ToyFacede tf = new ToyFacede();
+            //Lấy dữ liệu từ client:
+            String id = request.getParameter("id");
+            String op = request.getParameter("op");
+            if(op.equals("yes")){
+                tf.delete(id);
+            }
+            request.getRequestDispatcher("/toy/index.do").forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace(); //in lỗi ở output giống sout
+//            request.setAttribute("errMsg", e.toString());
+            request.setAttribute("errMsg", "Error when deleting toy data");
+            //Cho hiện lại trang index:
+            request.getRequestDispatcher("/toy/index.do").forward(request, response);
+        }    
+    }    
     
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
