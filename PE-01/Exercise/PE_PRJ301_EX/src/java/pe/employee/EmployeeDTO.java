@@ -1,0 +1,45 @@
+package pe.employee;
+
+import java.util.Date;
+
+public class EmployeeDTO {
+    //your code here
+    private int id;
+    private String fullName;
+    private Date dob;
+    private double salary;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public Date getDob() {
+        return dob;
+    }
+
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+    
+    
+}
