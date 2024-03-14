@@ -17,8 +17,8 @@
         <hr/>
         <!--your code here-->
         Welcome  ${account.fullName} |
-        <a href="#">Logout</a> |
-        <a href="#">Create</a> <br/>
+        <a href="MainController?op=logout">Logout</a> |
+        <a href="MainController?op=create&roleId=${account.roleId}">Create</a> <br/>
         <br/>
         <table>
             <thead style="text-align: center">

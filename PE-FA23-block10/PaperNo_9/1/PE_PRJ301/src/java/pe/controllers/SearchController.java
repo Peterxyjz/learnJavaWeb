@@ -1,43 +1,32 @@
 package pe.controllers;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import pe.tblCapstones.CapstoneDAO;
+import pe.tblCapstones.CapstoneDTO;
 
-public class MainController extends HttpServlet {
+@WebServlet(name = "SearchController", urlPatterns = {"/search"})
+public class SearchController extends HttpServlet {
 
-    private static final String ERROR = "error.jsp";
-    private static final String LOGIN_PAGE = "login.jsp";
-    private static final String LOGIN_CONTROLLER = "login";
-    private static final String LOGOUT_CONTROLLER = "logout";
-    private static final String CREATE_PAGE = "create.jsp";
-    private static final String CREATE_CONTROLLER = "create";
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = ERROR;
-        String action = request.getParameter("op"); //bất theo button
-        System.out.println("action: " + action);
+        String url = "capstoneList.jsp";
         try {
-            if(action.equals("login")){
-                url = LOGIN_CONTROLLER;
-            }else if(action.equals("logout")){
-                url = LOGOUT_CONTROLLER;
-            }else if(action.equals("create")){
-                url = LOGIN_PAGE;
-                String roleId = request.getParameter("roleId");
-                if(roleId.equals("AM")){
-                    url = CREATE_PAGE;
-                }
-            }else if(action.equals("create_handler")){
-                url = CREATE_CONTROLLER;
-            }
+            String search_input = request.getParameter("search_input");
+            CapstoneDAO cd = new CapstoneDAO();
+            List<CapstoneDTO> caList = cd.searchByName(search_input);
+            request.setAttribute("caList", caList);
+
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("message", e.toString());
             log("Error at MainController: " + e.toString());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
