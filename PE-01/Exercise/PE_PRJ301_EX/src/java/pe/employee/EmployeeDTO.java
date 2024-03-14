@@ -9,6 +9,16 @@ public class EmployeeDTO {
     private Date dob;
     private double salary;
 
+    public EmployeeDTO() {
+    }
+
+    public EmployeeDTO(String fullName, Date dob, double salary) {
+        this.fullName = fullName;
+        this.dob = dob;
+        this.salary = salary;
+    }
+    
+    
     public int getId() {
         return id;
     }
