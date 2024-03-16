@@ -22,8 +22,18 @@ public class UpdateCartController extends HttpServlet {
         
         HttpSession session = request.getSession();
         Cart cart = (Cart) session.getAttribute("cart");
-        cart.update(id, quantity);
+        cart.update(id, quantity); 
         request.getRequestDispatcher("viewCart.jsp").forward(request, response);
+        
+        //nếu remove:
+        
+//        String id = request.getParameter("id");
+//        HttpSession session = request.getSession();
+//        Cart cart = (Cart) session.getAttribute("cart");
+//        cart.remove(id);
+//request.getRequestDispatcher("viewCart.jsp").forward(request, response);
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

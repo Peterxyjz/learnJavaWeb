@@ -5,10 +5,6 @@
  */
 package pe.fall23.db;
 
-/**
- *
- * @author QUOC PHONG
- */
 public class ProductDTO {
 
     private String id;
