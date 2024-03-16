@@ -14,10 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import pe.fall23.utils.DBUtils;
 
-/**
- *
- * @author QUOC PHONG
- */
 public class ProductDAO {
 
     public List<ProductDTO> searchAll() throws ClassNotFoundException, SQLException {
